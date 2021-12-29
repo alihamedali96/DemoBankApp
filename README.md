@@ -11,7 +11,7 @@ Thymeleaf\
 Hibernate
 
 # Pending Features:
-Redirecting When email has been taken/
+Redirecting When email has been taken\
 Contact Page\
 Profile Page\
 Account History
