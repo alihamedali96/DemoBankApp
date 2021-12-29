@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+<title>Withdrawl</title>
+</head>
+<body>
+	<form action="#" th:action="@{/user/withdraw}" th:object="${account}" method="post">
+		<table>
+			
+                      
+                        <tr>
+				<td><label for="withdraw">Withdrawl Amount</label></td>
+				<td><input type="text" th:field="*{balance}"></input></td>
+			</tr>
+                        
+                    
+                    
+			<tr>
+				<td></td>
+                                <td><button type="submit">Withdraw</button></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

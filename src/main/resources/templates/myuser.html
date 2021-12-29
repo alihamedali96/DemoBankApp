@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+<title>User</title>
+</head>
+<body>
+    <div class="container text-center">
+        <div>
+            <form th:action="@{/logout}" method="post">
+                
+                <p>
+<!--                    Welcome <b> [[${#request.userPrincipal.principal.firstName}]]</b>
+                        <span>Balance: </span><span th:text="${#request.userPrincipal.principal.balance}"></span>-->
+                </p>
+                <input type="submit" value ="Sign Out" />
+            </form>
+            
+        </div>
+     
+        <div>
+            <h3><a th:href="@{/user/create}">Deposit</a></h3>
+               <h3><a th:href="@{/user/withdraw}"> Withdrawl</a></h3>
+            
+        </div>
+        
+        
+    </div>
+</body>
+</html>

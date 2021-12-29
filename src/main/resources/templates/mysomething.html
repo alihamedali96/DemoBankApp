@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+<title></title>
+</head>
+<body>
+	
+	 <span>First Name: </span><span th:text="${user.firstName}"></span>
+         <span>Balance: </span><span th:text="${user.customer.account.balance}"></span>
+   
+	
+</body>
+</html>

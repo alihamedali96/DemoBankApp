@@ -1,0 +1,38 @@
+server: 
+    error: 
+        include-message: always  
+        include-binding-errors: always 
+         
+spring: 
+     datasource: 
+        driverClassName: org.postgresql.Driver
+        password: dd10ddf5dc6cad66766a715d07343073dda43028c47f6084a320884c059a0f48 
+        url: jdbc:postgresql://ec2-63-34-223-144.eu-west-1.compute.amazonaws.com:5432/dd9h1ho18ocpnn
+        username: pskllohvsztjdc 
+        
+     jpa: 
+         hibernate: 
+            ddl-auto: create-drop 
+         properties: 
+             hibernate: 
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+                format_sql: true 
+     show-sql: true 
+                
+     mail:
+         host: smtp.pepipost.com
+         port: 25
+         username: alihamedali
+         password: alihamedali_5dcaeaed7aba371cc3e7d781d1281ccb
+         
+         properties:
+            mail:
+                smtp:
+                    ssl:
+                        trust: "*"
+                    auth: true
+                    starttls:
+                        enable: true
+                    connectiontimeout: 5000
+                    timeout: 3000
+                    writetimeout: 5000

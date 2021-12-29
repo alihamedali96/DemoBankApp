@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Dashboard</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- =======================================================
+  * Template Name: NiceAdmin - v2.2.0
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  
+  <script>
+    function onlyDotsAndNumbers(txt, event) {
+        var charCode = (event.which) ? event.which : event.keyCode
+        if (charCode == 46) {
+            if (txt.value.indexOf(".") < 0)
+                return true;
+            else
+                return false;
+        }
+
+        if (txt.value.indexOf(".") > 0) {
+            var txtlen = txt.value.length;
+            var dotpos = txt.value.indexOf(".");
+            //Change the number here to allow more decimal points than 2
+            if ((txtlen - dotpos) > 2)
+                return false;
+        }
+
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+     
+  </script>
+    
+  
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="dashboard.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">Bank Of Alerica</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>
+          </a><!-- End Notification Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <li class="dropdown-header">
+              You have no new notifications
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+           
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Show all notifications</a>
+            </li>
+
+          </ul><!-- End Notification Dropdown Items -->
+
+        </li><!-- End Notification Nav -->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-chat-left-text"></i>
+            <span class="badge bg-success badge-number">1</span>
+          </a><!-- End Messages Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+            <li class="dropdown-header">
+              You have 1 new messages
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Bank Of Alerica</h4>
+                  <p>Thank You for creating an account with Bank Of Alerica. Click here t...</p>
+                  <p>1 min ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            
+
+            <li class="dropdown-footer">
+              <a href="#">Show all messages</a>
+            </li>
+
+          </ul><!-- End Messages Dropdown Items -->
+
+        </li><!-- End Messages Nav -->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/user.png" alt="Profile" class="rounded-circle">
+          <span class="d-none d-md-block dropdown-toggle ps-2" th:text="${#request.userPrincipal.principal.Username}">Guest</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6 th:text="${#request.userPrincipal.principal.firstName} +' ' +${#request.userPrincipal.principal.lastName} ">Name</h6>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" th:href="@{/profile}">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" th:href="@{/contact}">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" th:href="@{/contact}">
+                <i class="bi bi-question-circle"></i>
+                <span>Need Help?</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+              
+            <li>
+              <a class="dropdown-item d-flex align-items-center" th:href="@{/logout}">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link active" th:href="@{/dashboard}">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+      
+      <!-- ======= Sidebar ======= -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{/transact}">
+          <i class="bi bi-credit-card"></i>
+          <span>Transactions</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{/history}">
+          <i class="bi bi-layout-text-window-reverse"></i>
+          <span>Account History</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-heading">Pages</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{/profile}">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="@{/history}">
+          <i class="bi bi-envelope"></i>
+          <span>Contact</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+      
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+        <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
+      
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      <nav>
+      
+    </div><!-- End Page Title -->
+
+       <!-- Right Side Offcanvas: Accounts Form Container -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel" class="text-white">Create / Add an Account </h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <!-- Offcanvas Body: Accounts Form Wrapper -->
+        <div class="offcanvas-body">
+            <!-- Card: Accounts Form Card  -->
+            <div class="card">
+                <!-- Card Body -->
+                <div class="card-body">
+                    <form action="#"  name="addAccountForm" th:action="@{/dashboard/create}" th:object="${accountsss}" method="post" class="add-account-form">
+                        <!-- Form Group -->
+                        <div class="form-group mb-3">
+                            <label for=""> Account Name</label>
+                            <input type="text"th:field="*{name}" name="account_namesss" class="form-control" placeholder="Enter Account Name...">
+                        </div>
+                        
+                          <label for=""> Deposit amount</label>
+                        <div class="input-group mb-3">
+                             
+                        <div class="input-group-prepend">
+                        <span class="input-group-text">£</span>
+                        </div>
+                        <input type="text" class="form-control"  th:field="*{balance}" name="account_name"  onkeypress="return onlyDotsAndNumbers(this,event);" maxlength="10" oncopy="return false" ondrag="return false" ondrop="return false" onpaste="return false" placeholder="Enter Intial Overdraft Amount...">
+                        </div>
+                        
+                      
+                         <label for=""> Overdraft amount</label>
+                        <div class="input-group mb-3">
+                             
+                        <div class="input-group-prepend">
+                        <span class="input-group-text">£</span>
+                        </div>
+                        <input type="text" class="form-control" th:field="*{overdraft}" name="account_names"  onkeypress="return onlyDotsAndNumbers(this,event);" maxlength="10" oncopy="return false" ondrag="return false" ondrop="return false" onpaste="return false" placeholder="Enter Intial Overdraft Amount...">
+                        </div>
+                        
+          
+                        <!-- End Of Form Group -->
+
+                        <!-- Form Group -->
+                        <div class="form-group my-2">
+                            <button type="submit" id="" class="btn btn-md transact-btn">Add Account</button>
+                        </div>
+                        <!-- End Of Form Group -->
+
+                    </form>
+                </div>
+                <!-- End Of Card Body -->
+            </div>
+            <!-- End Card: Accounts Form Card  -->
+        </div>
+        <!-- End Of Offcanvas Body: Accounts Form Wrapper -->
+    </div>
+    <!-- End Of Right Side Offcanvas: Accounts Form Container -->
+    
+    <div th:if="${!accountsList.empty}">
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-6">
+
+               <button id="" class="btn btn-primary btn-lg shadow" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    <i class="fa fa-credit-card"></i> Add New Account
+                 </button>
+            
+           
+       
+            
+  <div th:each ="account : ${accountsList}">
+     <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" th:text="${account.name}">
+       
+          
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+       <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex">Name <span class="ms-auto"><b>  [[${account.name}]]  </b></span></li>
+                         <li class="list-group-item d-flex">Balance <span class="ms-auto"><b th:text="'£'+${account.balance}">  hi  </b></span></li>
+                           <li class="list-group-item d-flex">Overdraft <span class="ms-auto"><b th:text="'£'+${account.overdraft}">  hi  </b></span></li>
+             
+                    </ul>
+      </div>
+    </div>
+  </div>
+    </div>     
+
+         </div>   
+
+        </div>
+      </div>
+    </section>
+    </div>
+    
+    <div th:unless="${!accountsList.empty}">
+     <!-- Container: No Accounts  -->
+    <div class="container">
+        <!-- Card: No Accounts -->
+        <div class="card no-accounts-card">
+            <!-- Card Body -->
+            <div class="card-body">
+                <!-- Card Title -->
+                <h1 class="card-title">
+                    <i class="fas fa-ban text-danger"></i> NO Registered Accounts
+                </h1>
+                 <!-- End Of Card Title -->
+                <hr>
+                 <!-- Card Text -->
+                 <div class="card-text">
+                     You currently do not have any registered accounts. <br>
+                     Please click below to register / add a new account.
+                 </div>
+                 <!-- End Of Card Text -->
+                 <br>
+                 <button id="" class="btn btn-primary btn-lg shadow" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    <i class="fa fa-credit-card"></i> Add New Account
+                 </button>
+                 
+               
+
+            </div>
+            <!-- End Of Card Body -->
+        </div>
+        <!-- End Of Card: No Accounts -->
+
+    </div>
+    <!-- End Of Container: No Accounts  -->
+  </div>
+
+  </main><!-- End #main -->
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.min.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+<title>Create Bank Account</title>
+</head>
+<body>
+	<form action="#" th:action="@{/user/create}" th:object="${account}" method="post">
+		<table>
+			
+                      
+                        <tr>
+				<td><label for="Deposit">Deposit Amount</label></td>
+				<td><input type="text" th:field="*{balance}"></input></td>
+			</tr>
+                        
+                             <tr>
+				<td><label for="Overdraft">Overdraft Amount</label></td>
+				<td><input type="text" th:field="*{overdraft}"></input></td>
+			</tr>
+                    
+			<tr>
+				<td></td>
+                                <td><button type="submit">Create Account</button></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
