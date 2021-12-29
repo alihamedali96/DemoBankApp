@@ -5,17 +5,17 @@ server:
          
 spring: 
      datasource: 
-        driverClassName: org.postgresql.Driver
-        password: dd10ddf5dc6cad66766a715d07343073dda43028c47f6084a320884c059a0f48 
-        url: jdbc:postgresql://ec2-63-34-223-144.eu-west-1.compute.amazonaws.com:5432/dd9h1ho18ocpnn
-        username: pskllohvsztjdc 
+        driverClassName: com.mysql.cj.jdbc.Driver
+        password: chelseaFC1  
+        url: jdbc:mysql://localhost:3306/springTestDB
+        username: root 
         
      jpa: 
          hibernate: 
             ddl-auto: create-drop 
          properties: 
              hibernate: 
-                dialect: org.hibernate.dialect.PostgreSQLDialect
+                dialect: org.hibernate.dialect.MySQL5Dialect
                 format_sql: true 
      show-sql: true 
                 
