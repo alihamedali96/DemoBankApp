@@ -2,15 +2,17 @@
 An Online Banking Demo Made With Spring Boot.\
 Link: https://springdemo96.herokuapp.com/
 
-# Technologies Used:
+# Technologies And Languages Used:
 Java\
 Spring Boot\
 SQL\
 Javascript\
 Thymeleaf\
-Hibernate
+Spring Data JPA & Hibernate
+
 
 # Pending Features:
+Sending confirmation email with STMP
 Redirecting When email has been taken\
 Contact Page\
 Profile Page\
