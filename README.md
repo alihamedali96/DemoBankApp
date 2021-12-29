@@ -1,8 +1,8 @@
-#Spring Boot Bank App\
+# Spring Boot Bank App
 An Online Banking Demo Made With Spring Boot.\
 Link: https://springdemo96.herokuapp.com/
 
-#Technologies Used:\
+# Technologies Used:
 Java\
 Spring Boot\
 SQL\
@@ -10,12 +10,12 @@ Javascript\
 Thymeleaf\
 Hibernate
 
-Pending Features:
+# Pending Features:
 Contact Page\
 Profile Page\
 Account History
 
-#What I Learned:\
+# What I Learned:
 Working With Spring Boot\
 Launching a real world Application\
 Spring Security\
